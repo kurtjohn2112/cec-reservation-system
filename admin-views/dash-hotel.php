@@ -22,7 +22,8 @@ if (isset($_POST['add_hotel'])) {
 
 ?>
 <div class="container my-5">
-    <div class="row">
+<a href="<?php echo $previous ?>"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
+    <div class="row mt-5">
         <form action="" method="post">
             <div class="col-10">
                 <div class="input-group">

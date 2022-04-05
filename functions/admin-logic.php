@@ -6,7 +6,7 @@ include 'connection-db.php';
 # general queries -------------------------------------------------
 function show($table_name){
     $conn = connect();
-    $sql = "SELECT  * FROM $table_name";
+    $sql = "SELECT  * FROM $table_name ORDER BY id DESC";
     $result = $conn->query($sql);
 
     if($result->num_rows > 0){

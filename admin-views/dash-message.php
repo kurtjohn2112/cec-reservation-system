@@ -9,11 +9,12 @@ include '../functions/admin-logic.php';
 </div>
 
 <div class="container my-5">
+<a href="index.php"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
     <?php if (!empty(show('messages'))) : ?>
         <?php foreach (show('messages') as $message) : ?>
             <div class="row justify-content-center mt-3">
                 <div class="col-10 border-bottom  text-truncate p-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam ut sunt neque at animi consequuntur in itaque corporis recusandae dignissimos corrupti culpa vel incidunt dolor, eaque nulla rerum minima maiores.
+                <a href="check-message.php?msg_id=<?php echo $message['id'] ?>" class="text-decoration-none"> <?php echo $message['message'] ?></a>
 
                 </div>
                 <div class="col-2 border-bottom">

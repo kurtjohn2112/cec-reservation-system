@@ -24,7 +24,8 @@ if (isset($_POST['add_church'])) {
 
 ?>
 <div class="container my-5">
-    <div class="row">
+    <a href="<?php echo $previous ?>"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
+    <div class="row mt-5">
         <form action="" method="post">
             <div class="col-10">
                 <div class="input-group">
@@ -35,7 +36,7 @@ if (isset($_POST['add_church'])) {
             </div>
 
         </form>
-       
+
     </div>
 </div>
 
@@ -44,29 +45,29 @@ if (isset($_POST['add_church'])) {
     $churches = show('churches');
 
     if (!empty($churches)) { ?>
-       <table class="table table-bordered">
-           <thead class="table-dark">
-               <td>Name</td>
-               <td>Location</td>
-               <td colspan="3">Actions</td>
-           </thead>
-           <tbody>
-               
-               <?php foreach($churches as $church): ?>
-                   <tr>
-                       <td><?php echo $church['name']; ?></td>
-                       <td><?php echo $church['location']; ?></td>
-                       <td class="text-center">
-                            <a href="upload-img.php?id=<?php echo $church['id']?>&label=church"><i class="fas fa-camera text-info"></i></a>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <td>Name</td>
+                <td>Location</td>
+                <td colspan="3">Actions</td>
+            </thead>
+            <tbody>
+
+                <?php foreach ($churches as $church) : ?>
+                    <tr>
+                        <td><?php echo $church['name']; ?></td>
+                        <td><?php echo $church['location']; ?></td>
+                        <td class="text-center">
+                            <a href="upload-img.php?id=<?php echo $church['id'] ?>&label=church"><i class="fas fa-camera text-info"></i></a>
                             <a href="edit-church.php?id=<?php echo $church['id'] ?>"><i class="fas mx-3 fa-edit text-warning"></i></a>
                             <a href="delete.php?church_id=<?php echo $church['id'] ?>"><i class="fas fa-trash text-danger"></i></a>
 
-                       </td>
-                   </tr>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
-                
-           </tbody>
-       </table>
+
+            </tbody>
+        </table>
 
     <?php } ?>
 

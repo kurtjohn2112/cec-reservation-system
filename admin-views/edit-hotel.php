@@ -16,7 +16,7 @@ if(isset($_POST['save_edit'])){
 </div>
 
 <div class="container my-5 p-5">
-    <a href="dash-hotel.php"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
+    <a href="<?php echo $previous ?>"> <i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
     <div class="card mt-3 w-50 mx-auto shadow">
         <div class="card-body">
             <form action="" method="post">
