@@ -35,6 +35,8 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             <div class="dropdown-menu" aria-labelledby="dropdownId">
               <a class="dropdown-item" href="dash-church.php">Manage Churches</a>
               <a class="dropdown-item" href="dash-hotel.php">Manage Hotels</a>
+              <a class="dropdown-item" href="add_user.php">Manage users</a>
+              <a class="dropdown-item" href="create-event.php">Create events</a>
               <a class="dropdown-item" href="dash-message.php">Manage Messages <span class="badge bg-danger"><?php //echo count(show('messages')) ?></span></a>
             </div>
           </li>

@@ -146,4 +146,35 @@ function update_church($name,$location,$id){
         die('ERROR: '.$conn->error);
     }
 }
-?>
+
+// user ------------
+function register_user($name,$email,$contact,$location,$role,$username,$password){
+    $conn = connect();
+    $sql = "INSERT INTO users(name,email,contact,location,role,username,password)VALUES('$name','$email','$contact','$location','$role','$username','$password')";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+        // header('refresh: 0');
+        return TRUE;
+    }else{
+       die("ERROR: ".$conn->error);
+    }
+    
+
+}
+
+function create_event($name,$user_id,$organizer,$type,$date){
+    $conn = connect();
+    $name = $conn->real_escape_string($name);
+    $sql = "INSERT INTO events(name,user_id,organizer,type,event_date)VALUES('$name','$user_id','$organizer','$type','$date')";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+        // header('refresh: 0');
+        return TRUE;
+    }else{
+       die("ERROR: ".$conn->error);
+    }
+    
+
+}

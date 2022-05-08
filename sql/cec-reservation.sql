@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 05, 2022 at 01:50 AM
+-- Generation Time: May 08, 2022 at 11:47 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -40,6 +40,31 @@ CREATE TABLE `churches` (
 INSERT INTO `churches` (`id`, `name`, `location`) VALUES
 (1, 'Sto Nino', 'Cebu'),
 (11, 'St. Therese Church', 'samboan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `organizer` int(11) DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `unique_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `name`, `user_id`, `organizer`, `type`, `location`, `event_date`, `unique_id`) VALUES
+(1, 'Jeno\'s second birthday', 1, 2, 'birthday', NULL, '2022-05-20', NULL),
+(2, 'Kevin\'s Wedding', 1, 2, 'wedding', NULL, '2022-05-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -120,19 +145,32 @@ CREATE TABLE `messages` (
 INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
 (1, 'kurt john', 'kjmojado21@gmail.com', '12312312', 'i hate this'),
 (2, 'kurt john', 'kjmojado21@gmail.com', '12312312', 'i hate this'),
-(3, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdas'),
-(4, 'asdas', 'Sample@gmail.com', '12312312', 'asdasd'),
-(5, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasd'),
-(6, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdas'),
-(7, 'asdas', 'Sample@gmail.com', '12312312', 'asdasdsa'),
-(8, 'asdas', 'Sample@gmail.com', '12312312', 'asdasdsa'),
-(9, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasds'),
-(10, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdasd'),
-(11, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdas'),
-(12, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdas'),
-(13, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasd'),
-(14, 'asdas', 'Sample@gmail.com', '12312312', 'asdasd'),
-(15, '', '', '', '');
+(3, 'kurt john', 'Sample@gmail.com', '12312312', 'asdasdas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contact` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `role` varchar(1) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `contact`, `location`, `role`, `username`, `password`) VALUES
+(1, 'Kurt John', 'sample@sample', '09334673525', 'Cebu City', 'U', 'kj@ctu.com', 'asdsa'),
+(2, 'Bernardine Ragas', 'sample@sample', '09334673525', 'San Fernando', 'O', 'b@gmail.com', 'sample');
 
 --
 -- Indexes for dumped tables
@@ -142,6 +180,12 @@ INSERT INTO `messages` (`id`, `name`, `email`, `number`, `message`) VALUES
 -- Indexes for table `churches`
 --
 ALTER TABLE `churches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -163,6 +207,12 @@ ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -171,6 +221,12 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `churches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hotels`
@@ -189,6 +245,12 @@ ALTER TABLE `images`
 --
 ALTER TABLE `messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
