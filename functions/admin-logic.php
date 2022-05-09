@@ -163,10 +163,10 @@ function register_user($name,$email,$contact,$location,$role,$username,$password
 
 }
 
-function create_event($name,$user_id,$organizer,$type,$date){
+function create_event($name,$user_id,$organizer,$type,$date,$unique_id){
     $conn = connect();
     $name = $conn->real_escape_string($name);
-    $sql = "INSERT INTO events(name,user_id,organizer,type,event_date)VALUES('$name','$user_id','$organizer','$type','$date')";
+    $sql = "INSERT INTO events(name,user_id,organizer,type,event_date,unique_id)VALUES('$name','$user_id','$organizer','$type','$date','$unique_id')";
     $result = $conn->query($sql);
 
     if($result == TRUE){
@@ -178,3 +178,44 @@ function create_event($name,$user_id,$organizer,$type,$date){
     
 
 }
+
+function login($username,$password){
+    $conn = connect();
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' ";
+    $result = $conn->query($sql);
+
+    if($result->num_rows == 1){
+        $row = $result->fetch_assoc();
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['name'] = $row['name'];
+        $_SESSION['role'] = $row['role'];
+
+        if($row['role'] == 'O'){
+            header('location: organizer-views/dashboard.php');
+
+        }else{
+            header('location: admin-views/');
+
+        }
+      
+    }
+
+}
+function book_event($organizer_id,$event_id){
+    $conn = connect();
+    $sql = "UPDATE events SET organizer = '$organizer_id' WHERE id = '$event_id'";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong>Event booked successfully! Check profile to get event details</strong> 
+            </div>';
+       
+        
+    }else{
+       die("ERROR: ".$conn->error);
+    }
+
+}
+

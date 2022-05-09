@@ -6,6 +6,8 @@ include '../html/head.html';
 
 ?>
 
+
+
 <div class="container-fluid">
     <?php include 'admin-navbar.php';
 
@@ -15,8 +17,9 @@ include '../html/head.html';
         $organizer_id = $_POST['organizer_id'];
         $event_type = $_POST['event_type'];
         $event_date = $_POST['event_date'];
+        $u_id = "event-".uniqid();
 
-        create_event($name,$customer_id,$organizer_id,$event_type,$event_date);
+        create_event($name,$customer_id,$organizer_id,$event_type,$event_date,$u_id);
 
     endif;
 
@@ -33,7 +36,7 @@ include '../html/head.html';
     </p>
     <div class="card">
         <div class="card-header">
-            <p class="font-monospace">Create a user</p>
+            <p class="font-monospace">Create an event</p>
         </div>
         <div class="card-body">
             <form action="" method="post">
@@ -55,6 +58,7 @@ include '../html/head.html';
                     <div class="col">
                         <select name="organizer_id" id="" class="form-select">
                             <option value="" selected hidden disabled>---</option>
+                            <option value="0"> Post event to organizers page </option>
                             <?php foreach (show_data_multiple('users', 'role', 'O') as $row) : ?>
                                 <option value="<?php echo $row['id'] ?>"><?php echo $row['name'] ?></option>
                             <?php endforeach; ?>
