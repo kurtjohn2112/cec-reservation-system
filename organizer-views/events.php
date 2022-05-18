@@ -3,10 +3,6 @@ include '../functions/admin-logic.php';
 include '../html/head.html';
 
 
-
-
-
-
 ?>
 
 <?php include 'navbar.php';

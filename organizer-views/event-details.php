@@ -35,7 +35,7 @@ endif;
     </div> -->
 
 
- 
+
     <div class="border shadow p-5">
         <h1 class="display-6 text-center"><?php echo $event['name'] ?></h1>
         <hr>
@@ -54,9 +54,18 @@ endif;
             <?php else : ?>
                 <button type="submit" name="get_event" class="btn btn-outline-secondary" disabled>Event Taken</button>
             <?php endif; ?>
+            
+            <p class="small mt-5"><span class="text-success">Copy Event Link</span> and send this to user to edit his event page</p>
+                <span class="text-muted mt-5">
+                    Event Link: <span class="font-normal">http://localhost:8888/reservation-cec/user-event-page.php?event_id=<?php echo $event['unique_id'] ?></span>
+            </span>
+           
 
         </form>
+
+        
     </div>
+
 
 </div>
 

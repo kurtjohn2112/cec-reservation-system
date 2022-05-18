@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 08, 2022 at 11:47 AM
+-- Generation Time: May 18, 2022 at 08:24 AM
 -- Server version: 5.7.34
 -- PHP Version: 8.0.8
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `cec-reservation`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cater`
+--
+
+CREATE TABLE `cater` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cater`
+--
+
+INSERT INTO `cater` (`id`, `name`, `price`, `description`) VALUES
+(1, 'Port seafoods restaurant', '5000', 'seafoods'),
+(2, 'Chikaan', '5000', 'seafoods');
 
 -- --------------------------------------------------------
 
@@ -51,20 +72,23 @@ CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `organizer` int(11) DEFAULT NULL,
+  `organizer` int(11) DEFAULT '0',
   `type` varchar(255) NOT NULL,
   `location` varchar(255) DEFAULT NULL,
   `event_date` date DEFAULT NULL,
-  `unique_id` varchar(255) DEFAULT NULL
+  `unique_id` varchar(255) DEFAULT NULL,
+  `bundle` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `user_id`, `organizer`, `type`, `location`, `event_date`, `unique_id`) VALUES
-(1, 'Jeno\'s second birthday', 1, 2, 'birthday', NULL, '2022-05-20', NULL),
-(2, 'Kevin\'s Wedding', 1, 2, 'wedding', NULL, '2022-05-07', NULL);
+INSERT INTO `events` (`id`, `name`, `user_id`, `organizer`, `type`, `location`, `event_date`, `unique_id`, `bundle`, `price`) VALUES
+(3, 'Mathew\'s Birthday', 3, 3, 'birthday', 's', '2022-05-08', 'event-6277d89b2f015', NULL, NULL),
+(4, 'Mathew\'s Birthday', 1, 2, 'birthday', 'Marco Polo Hotel', '2022-05-10', 'event-6277dff6eeffa', 'Chikaan', '13000'),
+(5, 'Jeno\'s second birthday', 3, 2, 'wedding', 'St. Therese Church', '2022-05-19', 'event-6277f103c0a8d', 'Chikaan', '13000');
 
 -- --------------------------------------------------------
 
@@ -169,12 +193,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `contact`, `location`, `role`, `username`, `password`) VALUES
-(1, 'Kurt John', 'sample@sample', '09334673525', 'Cebu City', 'U', 'kj@ctu.com', 'asdsa'),
-(2, 'Bernardine Ragas', 'sample@sample', '09334673525', 'San Fernando', 'O', 'b@gmail.com', 'sample');
+(1, 'Kurt John', 'sample@sample', '09334673525', 'Cebu City', 'A', 'sample@1', 'sample'),
+(2, 'Bernardine Ragas', 'sample@sample', '09334673525', 'San Fernando', 'O', 'b@gmail.com', 'sample'),
+(3, 'Bernardine Ragas', 'inayawan cebu city', '1234566', 'San Fernando', 'U', 'kjmojado21@gmail.com', 'samplesample');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cater`
+--
+ALTER TABLE `cater`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `churches`
@@ -217,16 +248,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cater`
+--
+ALTER TABLE `cater`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `churches`
 --
 ALTER TABLE `churches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hotels`
@@ -244,13 +281,13 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

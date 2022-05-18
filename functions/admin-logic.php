@@ -134,6 +134,18 @@ function add_church($name,$location){
     }
 
 }
+
+function add_cater($name,$price,$descrption){
+    $conn = connect();
+    $sql = "INSERT INTO cater(name,price,description)VALUES('$name','$price','$descrption')";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+        // header('refresh: 0');
+        return TRUE;
+    }
+
+}
 function update_church($name,$location,$id){
     $conn = connect();
     $sql = "UPDATE churches SET name = '$name', location = '$location' WHERE id = '$id'";
@@ -218,4 +230,19 @@ function book_event($organizer_id,$event_id){
     }
 
 }
+
+function update_event_user($location,$bundle,$price,$event_id){
+    $conn = connect();
+    $sql = "UPDATE events SET location = '$location', bundle = '$bundle', price = '$price' WHERE id = '$event_id' ";
+    $result = $conn->query($sql);
+
+    if($result == TRUE){
+        header('refresh: 0');
+        // return TRUE;
+    }else{
+       die("ERROR: ".$conn->error);
+    }
+}
+
+
 

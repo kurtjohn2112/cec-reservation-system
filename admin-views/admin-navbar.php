@@ -24,9 +24,9 @@ if (isset($_SERVER['HTTP_REFERER'])) {
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="">Pending Reservations</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="">Approved Reservations</a>
           </li>
@@ -34,6 +34,7 @@ if (isset($_SERVER['HTTP_REFERER'])) {
             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
             <div class="dropdown-menu" aria-labelledby="dropdownId">
               <a class="dropdown-item" href="dash-church.php">Manage Churches</a>
+              <a class="dropdown-item" href="dash-bundles.php">Manage Catering Services</a>
               <a class="dropdown-item" href="dash-hotel.php">Manage Hotels</a>
               <a class="dropdown-item" href="add_user.php">Manage users</a>
               <a class="dropdown-item" href="create-event.php">Create events</a>
